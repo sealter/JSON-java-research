@@ -177,7 +177,7 @@ public class JSONTokener {
             }
         }
         this.index += 1;
-        if (this.previous == '\r') {   //  \n -- unix, \r -- mac, \r\n -- windows  能说这种处理方式叫小技巧吗，逻辑上不太好理解
+        if (this.previous == '\r') {   //  \n -- unix, \r -- mac, \r\n -- windows
             this.line += 1;
             this.character = c == '\n' ? 0 : 1;
         } else if (c == '\n') {
@@ -199,7 +199,7 @@ public class JSONTokener {
      * @return The character.
      * @throws JSONException if the character does not match.
      */
-    public char next(char c) throws JSONException { // 为什么不返回boolean ?
+    public char next(char c) throws JSONException { // 为什么不返回boolean? --- consume the next character
         char n = this.next();
         if (n != c) {
             throw this.syntaxError("Expected '" + c + "' and instead saw '" +
